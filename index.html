@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f7fb">
+    <title>Clasificador de imágenes</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.7.4/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="page-header">
+        <p class="eyebrow">CLASIFICADOR CON INTELIGENCIA ARTIFICIAL</p>
+        <h1>¿Qué hay en la imagen?</h1>
+        <p class="intro">Sube una foto o activa la cámara y el modelo la clasificará.</p>
+      </header>
+
+      <section class="classifier" aria-label="Clasificador de imágenes">
+        <div class="workspace">
+          <div class="media-panel">
+            <div class="panel-heading">
+              <h2>Prueba una imagen</h2>
+              <span class="model-tag">Modelo: Ratón y libreta</span>
+            </div>
+
+            <div class="media-frame" id="media-frame">
+              <div class="placeholder" id="placeholder">
+                <span class="placeholder-icon" aria-hidden="true">✦</span>
+                <p>Tu imagen aparecerá aquí</p>
+                <span>Usa una foto o la cámara</span>
+              </div>
+              <img id="image-preview" alt="Imagen seleccionada para clasificar" hidden>
+              <div id="webcam-container" hidden></div>
+            </div>
+
+            <div class="actions">
+              <input id="image-input" class="file-input" type="file" accept="image/*">
+              <label class="button button-primary" for="image-input">Elegir imagen</label>
+              <button class="button button-secondary" id="start-camera" type="button">Iniciar cámara</button>
+              <button class="button button-quiet" id="stop-camera" type="button" hidden>Detener cámara</button>
+            </div>
+            <p class="camera-note">La cámara requiere permiso del navegador y una conexión local segura (localhost).</p>
+          </div>
+
+          <aside class="results-panel" aria-live="polite" aria-atomic="false">
+            <div class="panel-heading">
+              <h2>Resultado</h2>
+              <span class="result-icon" aria-hidden="true">↗</span>
+            </div>
+            <p class="status" id="status" role="status">Elige una imagen o inicia la cámara para comenzar.</p>
+            <div id="predictions" class="predictions">
+              <p class="results-placeholder">Las predicciones aparecerán aquí.</p>
+            </div>
+          </aside>
+        </div>
+        <footer class="card-footer">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Clasificación ejecutada en tu navegador</span>
+        </footer>
+      </section>
+      <p class="page-footnote">El modelo reconoce las clases con las que fue entrenado. La calidad de la predicción puede variar según la imagen.</p>
+    </main>
+  </body>
+</html>
